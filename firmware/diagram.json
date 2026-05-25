@@ -73,13 +73,13 @@
     [ "r1:2", "esp:5V.1", "green", [ "v0" ] ],
     [ "led1:C", "esp:GND.4", "green", [ "h74.4", "v2.8" ] ],
     [ "esp:8", "btn2:1.r", "green", [ "h152.32", "v172.8" ] ],
-    [ "esp:GND.8", "btn2:1.l", "black", [ "h133.12", "v153.6", "h-182.4" ] ],
     [ "esp:9", "btn3:1.r", "green", [ "h181.12", "v153.6" ] ],
-    [ "esp:GND.8", "btn3:1.l", "black", [ "h0" ] ],
-    [ "esp:GND.8", "btn1:1.l", "black", [ "h0" ] ],
-    [ "esp:GND.8", "btn4:1.l", "black", [ "h-68.48", "v288" ] ],
     [ "esp:2", "btn1:1.r", "green", [ "h0" ] ],
-    [ "esp:3", "btn4:1.r", "green", [ "h-38.4", "v297.6", "h134.4" ] ]
+    [ "esp:3", "btn4:1.r", "green", [ "h-38.4", "v297.6", "h134.4" ] ],
+    [ "esp:GND.2", "btn4:2.r", "black", [ "h-67.2", "v355.2", "h134.4" ] ],
+    [ "esp:GND.3", "btn1:2.r", "black", [ "h-28.8", "v259.2", "h48" ] ],
+    [ "esp:GND.8", "btn2:2.r", "black", [ "h17.92", "v192" ] ],
+    [ "esp:GND.8", "btn3:2.r", "black", [ "h56.32", "v249.6", "h-28.8" ] ]
   ],
   "serialMonitor": { "convertEol": true, "display": "terminal" },
   "dependencies": {}

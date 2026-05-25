@@ -9,9 +9,17 @@
 
 use embassy_executor::Spawner;
 use embassy_time::{Duration, Timer};
-use esp_hal::clock::CpuClock;
+use esp_hal::gpio::{Input, InputConfig, Level, Output, OutputConfig, Pull};
+use esp_hal::spi::master::{Config, Spi};
+use esp_hal::spi::Mode;
+use esp_hal::time::Rate;
 use esp_hal::timer::timg::TimerGroup;
+use esp_hal::{clock::CpuClock, delay::Delay};
 use log::{error, info};
+
+#[path = "../max7219.rs"]
+mod max7219;
+use max7219::Max7219;
 
 #[panic_handler]
 fn panic(panic_info: &core::panic::PanicInfo) -> ! {
@@ -19,8 +27,6 @@ fn panic(panic_info: &core::panic::PanicInfo) -> ! {
     loop {}
 }
 
-// This creates a default app-descriptor required by the esp-idf bootloader.
-// For more information see: <https://docs.espressif.com/projects/esp-idf/en/stable/esp32/api-reference/system/app_image_format.html#application-description>
 esp_bootloader_esp_idf::esp_app_desc!();
 
 #[allow(
@@ -28,10 +34,7 @@ esp_bootloader_esp_idf::esp_app_desc!();
     reason = "it's not unusual to allocate larger buffers etc. in main"
 )]
 #[esp_rtos::main]
-async fn main(spawner: Spawner) -> ! {
-    // generator version: 1.3.0
-    // generator parameters: --chip esp32c3 -o unstable-hal -o embassy -o log -o wokwi -o ci -o neovim -o vscode
-
+async fn main(_spawner: Spawner) -> ! {
     esp_println::logger::init_logger_from_env();
 
     let config = esp_hal::Config::default().with_cpu_clock(CpuClock::max());
@@ -44,13 +47,56 @@ async fn main(spawner: Spawner) -> ! {
 
     info!("Embassy initialized!");
 
-    // TODO: Spawn some tasks
-    let _ = spawner;
+    let mut delay = Delay::new();
+
+    // SPI pins
+    let sck = peripherals.GPIO5;
+    let mosi = peripherals.GPIO4;
+    let cs = Output::new(peripherals.GPIO6, Level::High, OutputConfig::default());
+
+    let spi = Spi::new(
+        peripherals.SPI2,
+        Config::default()
+            .with_frequency(Rate::from_mhz(1))
+            .with_mode(Mode::_0),
+    )
+    .unwrap()
+    .with_sck(sck)
+    .with_mosi(mosi);
+
+    let btn_up = Input::new(peripherals.GPIO8, InputConfig::default().with_pull(Pull::Up));
+    let btn_down = Input::new(peripherals.GPIO3, InputConfig::default().with_pull(Pull::Up));
+    let btn_left = Input::new(peripherals.GPIO2, InputConfig::default().with_pull(Pull::Up));
+    let btn_right = Input::new(peripherals.GPIO9, InputConfig::default().with_pull(Pull::Up));
+
+    let mut matrix = Max7219::new(spi, cs, &mut delay);
+    matrix.clear();
+
+    let mut row = 3;
+    let mut col = 3;
+    let mut dr = 0;
+    let mut dc = 1;
 
     loop {
-        info!("Hello world!");
-        Timer::after(Duration::from_secs(1)).await;
-    }
+        if btn_up.is_low() {
+            (dr, dc) = (-1, 0);
+        }
+        if btn_down.is_low() {
+            (dr, dc) = (1, 0);
+        }
+        if btn_left.is_low() {
+            (dr, dc) = (0, -1);
+        }
+        if btn_right.is_low() {
+            (dr, dc) = (0, 1);
+        }
 
-    // for inspiration have a look at the examples at https://github.com/esp-rs/esp-hal/tree/esp-hal-v1.1.0/examples
+        row = ((row as i8 + dr).rem_euclid(8)) as u8;
+        col = ((col as i8 + dc).rem_euclid(8)) as u8;
+
+        matrix.clear();
+        matrix.set_pixel(row, col);
+
+        Timer::after(Duration::from_millis(150)).await;
+    }
 }
