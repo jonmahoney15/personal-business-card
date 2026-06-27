@@ -58,12 +58,15 @@ version = "0.1.0"
 dependencies = [
  "critical-section",
  "embassy-executor",
+ "embassy-sync 0.8.0",
  "embassy-time",
+ "embedded-io-async 0.6.1",
  "esp-bootloader-esp-idf",
  "esp-hal",
  "esp-println",
  "esp-rtos",
  "log",
+ "max7219",
  "static_cell",
 ]
 
@@ -980,6 +983,15 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d1525a2a28c7f4fa0fc98bb91ae755d1e2d1505079e05539e35bc876b5d65ae9"
 dependencies = [
  "regex-automata",
+]
+
+[[package]]
+name = "max7219"
+version = "0.5.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "0f591fc7e31531ea92a65ca9d2a6a9d8c96cc8e59ffeb9a9644279f254bbcbc9"
+dependencies = [
+ "embedded-hal 1.0.0",
 ]
 
 [[package]]
