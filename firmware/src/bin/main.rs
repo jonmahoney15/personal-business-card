@@ -10,8 +10,8 @@
 use embassy_executor::Spawner;
 use embassy_time::{Duration, Timer};
 use esp_hal::gpio::{Input, InputConfig, Level, Output, OutputConfig, Pull};
-use esp_hal::spi::master::{Config, Spi};
 use esp_hal::spi::Mode;
+use esp_hal::spi::master::{Config, Spi};
 use esp_hal::time::Rate;
 use esp_hal::timer::timg::TimerGroup;
 use esp_hal::{clock::CpuClock, delay::Delay};
@@ -64,10 +64,22 @@ async fn main(_spawner: Spawner) -> ! {
     .with_sck(sck)
     .with_mosi(mosi);
 
-    let btn_up = Input::new(peripherals.GPIO8, InputConfig::default().with_pull(Pull::Up));
-    let btn_down = Input::new(peripherals.GPIO3, InputConfig::default().with_pull(Pull::Up));
-    let btn_left = Input::new(peripherals.GPIO2, InputConfig::default().with_pull(Pull::Up));
-    let btn_right = Input::new(peripherals.GPIO9, InputConfig::default().with_pull(Pull::Up));
+    let btn_up = Input::new(
+        peripherals.GPIO8,
+        InputConfig::default().with_pull(Pull::Up),
+    );
+    let btn_down = Input::new(
+        peripherals.GPIO3,
+        InputConfig::default().with_pull(Pull::Up),
+    );
+    let btn_left = Input::new(
+        peripherals.GPIO2,
+        InputConfig::default().with_pull(Pull::Up),
+    );
+    let btn_right = Input::new(
+        peripherals.GPIO9,
+        InputConfig::default().with_pull(Pull::Up),
+    );
 
     let mut matrix = Max7219::new(spi, cs, &mut delay);
     matrix.clear();

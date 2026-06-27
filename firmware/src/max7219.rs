@@ -1,4 +1,4 @@
-use esp_hal::{delay::Delay, gpio::Output, spi::master::Spi, Blocking};
+use esp_hal::{Blocking, delay::Delay, gpio::Output, spi::master::Spi};
 
 pub struct Max7219<'a> {
     spi: Spi<'a, Blocking>,
