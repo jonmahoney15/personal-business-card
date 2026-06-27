@@ -1,0 +1,86 @@
+** Drc report for business-card.kicad_pcb **
+** Created on 2026-05-15T22:03:03-0700 **
+
+** Found 9 DRC violations **
+[starved_thermal]: Thermal relief connection to zone incomplete (layer F.Cu; zone min spoke count 2; actual 1)
+    Local override; error
+    @(112.5000 mm, 41.5000 mm): Zone [GND] on B.Cu, priority 0
+    @(153.9000 mm, 95.1000 mm): Pad 2 [GND] of C10 on F.Cu
+[starved_thermal]: Thermal relief connection to zone incomplete (layer F.Cu; zone min spoke count 2; actual 1)
+    Local override; error
+    @(112.5000 mm, 41.5000 mm): Zone [GND] on B.Cu, priority 0
+    @(162.4000 mm, 114.3000 mm): Pad 2 [GND] of C2 on F.Cu
+[starved_thermal]: Thermal relief connection to zone incomplete (layer F.Cu; zone min spoke count 2; actual 1)
+    Local override; error
+    @(112.5000 mm, 41.5000 mm): Zone [GND] on B.Cu, priority 0
+    @(146.0000 mm, 123.5000 mm): Pad 2 [GND] of R1 on F.Cu
+[starved_thermal]: Thermal relief connection to zone incomplete (layer F.Cu; zone min spoke count 2; actual 1)
+    Local override; error
+    @(112.5000 mm, 41.5000 mm): Zone [GND] on B.Cu, priority 0
+    @(131.4170 mm, 90.5870 mm): Pad 4 [GND] of U1 on F.Cu
+[starved_thermal]: Thermal relief connection to zone incomplete (layer F.Cu; 2 spokes connected to isolated island)
+    Local override; error
+    @(112.5000 mm, 41.5000 mm): Zone [GND] on B.Cu, priority 0
+    @(139.2700 mm, 127.7800 mm): PTH pad S1 [GND] of J1
+[starved_thermal]: Thermal relief connection to zone incomplete (layer F.Cu; zone min spoke count 2; actual 1)
+    Local override; error
+    @(112.5000 mm, 41.5000 mm): Zone [GND] on B.Cu, priority 0
+    @(147.9300 mm, 127.7800 mm): PTH pad S1 [GND] of J1
+[starved_thermal]: Thermal relief connection to zone incomplete (layer F.Cu; zone min spoke count 2; actual 1)
+    Local override; error
+    @(112.5000 mm, 41.5000 mm): Zone [GND] on B.Cu, priority 0
+    @(157.5000 mm, 111.9000 mm): Pad 2 [GND] of C7 on F.Cu
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.2036 mm)
+    Rule: board setup constraints hole; error (excluded)
+    @(140.7100 mm, 128.3000 mm): NPTH pad of J1
+    @(140.4000 mm, 127.1000 mm): Pad B12A1 [GND] of J1 on F.Cu
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.2036 mm)
+    Rule: board setup constraints hole; error (excluded)
+    @(146.4900 mm, 128.3000 mm): NPTH pad of J1
+    @(146.8000 mm, 127.1000 mm): Pad A12B1 [GND] of J1 on F.Cu
+
+** Found 10 unconnected pads **
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(112.5000 mm, 41.5000 mm): Zone [GND] on B.Cu, priority 0
+    @(125.0670 mm, 90.5870 mm): Pad 9 [GND] of U1 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(112.5000 mm, 41.5000 mm): Zone [GND] on B.Cu, priority 0
+    @(112.5000 mm, 41.5000 mm): Zone [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(112.5000 mm, 41.5000 mm): Zone [GND] on B.Cu, priority 0
+    @(112.5000 mm, 41.5000 mm): Zone [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(140.4000 mm, 127.1000 mm): Pad B12A1 [GND] of J1 on F.Cu
+    @(112.5000 mm, 41.5000 mm): Zone [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(112.5000 mm, 41.5000 mm): Zone [GND] on B.Cu, priority 0
+    @(146.8000 mm, 127.1000 mm): Pad A12B1 [GND] of J1 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(147.9300 mm, 127.7800 mm): PTH pad S1 [GND] of J1
+    @(146.8000 mm, 127.1000 mm): Pad A12B1 [GND] of J1 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(153.9000 mm, 95.1000 mm): Pad 2 [GND] of C10 on F.Cu
+    @(152.1000 mm, 97.0500 mm): Pad 4 [GND] of X1 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(154.3000 mm, 98.7500 mm): Pad 2 [GND] of X1 on F.Cu
+    @(152.1000 mm, 97.0500 mm): Pad 4 [GND] of X1 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(154.3000 mm, 98.7500 mm): Pad 2 [GND] of X1 on F.Cu
+    @(112.5000 mm, 41.5000 mm): Zone [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(112.5000 mm, 41.5000 mm): Zone [GND] on B.Cu, priority 0
+    @(160.3000 mm, 101.1000 mm): Pad 2 [GND] of C8 on F.Cu
+
+** Found 0 Footprint errors **
+
+** End of Report **

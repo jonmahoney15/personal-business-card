@@ -1,0 +1,25 @@
+{
+  "board": "/Users/jonathan/dev/pcb-designs/business-card/business-card.kicad_pcb",
+  "timestamp": "2026-04-05T19:12:13-0700",
+  "total_violations": 1,
+  "violation_counts": {
+    "invalid_outline": 1
+  },
+  "severity_counts": {
+    "error": 1,
+    "warning": 0,
+    "info": 0
+  },
+  "violations": [
+    {
+      "type": "invalid_outline",
+      "severity": "error",
+      "message": "Board has malformed outline (no edges found on Edge.Cuts layer)",
+      "location": {
+        "x": 0.0,
+        "y": 0.0,
+        "unit": "mm"
+      }
+    }
+  ]
+}
